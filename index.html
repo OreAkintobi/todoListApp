@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <h1>Todo List</h1>
+    <!-- There should be a 'Toggle All' button -->
+    <div>
+        <!-- Clicking 'Toggle All' should run todoList.toggleAll -->
+        <button onclick="handlers.toggleAll()">Toggle All</button>
+    </div>
+    <!-- There should be a button for adding todos, changing todos, deleting todos and toggling todos -->
+    <div>
+        <!-- Clicking 'Add' should run todoList.addTodo -->
+        <button onclick="handlers.addTodo()">Add</button>
+        <input id="addTodoTextInput" type="text">
+    </div>
+    <div>
+        <!-- Clicking 'Change Todo' should run todoList.changeTodo -->
+        <button onclick="handlers.changeTodo()">Change Todo</button>
+        <input id="changeTodoPositionInput" type="number">
+        <input id="changeTodoTextInput" type="text">
+    </div>
+    <div>
+        <!-- Clicking 'Toggle Completed' should run todoList.toggleCompleted -->
+        <button onclick="handlers.toggleCompleted()">Toggle Completed</button>
+        <input id="toggleCompletedPositionInput" type="number">
+    </div>
+
+    <ul>
+    </ul>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
