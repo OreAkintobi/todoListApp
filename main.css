@@ -1,7 +1,10 @@
 body {
-    min-height: 100vh;
+/*     min-height: 100vh;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
+    position: flex;
+    text-align: center;
+    font-family: helvetica;
     background: #ffffff;
     color: #333;
     font-family: 'Calibri', sans-serif;
@@ -10,10 +13,10 @@ body {
 }
 
 #centerStuff {
-    position: fixed;
+/*     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
 }
 
 .heading {
