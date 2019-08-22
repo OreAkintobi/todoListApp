@@ -1,10 +1,13 @@
 body {
-    min-height: 100vh;
+/*     min-height: 100vh;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
+    position: flex;
+    text-align: center;
+    font-family: helvetica;
     background: #ffffff;
     color: #333;
-    font-family: 'Calibri', sans-serif;
+/*     font-family: 'Calibri', sans-serif; */
     font-weight: 400;
     text-transform: capitalize;
 }
