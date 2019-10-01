@@ -155,9 +155,8 @@ var view = {
             if (elementClicked.className === 'changeButton') {
                 console.log(elementClicked.className);
                 console.log(elementClicked.parentNode.id);
-
                 // Clicking Change should update todoList.todos and the DOM
-                handlers.changeTodo();
+                // handlers.changeTodo();
             }
         })
     }
