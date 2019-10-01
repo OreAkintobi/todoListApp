@@ -4,51 +4,51 @@
 // view.displayTodos should use forEach
 
 var todoList = {
-    //stores todos array on an object
-    todos: [],
-    //provides addTodo method
-    addTodo: function(todoText) {
-        this.todos.push({
-            todoText: todoText,
-            completed: false
-        });
-    },
-    //provides changeTodo method
-    changeTodo: function(position, todoText) {
-        //changeTodo method must change todoText property
-        this.todos[position].todoText = todoText;
-    },
-    //provides deleteTodo method
-    deleteTodo: function(position) {
-        this.todos.splice(position, 1);
-    },
-    //provides toggleCompleted method
-    toggleCompleted: function(position) {
-        var todo = this.todos[position];
-        //todoList.toggleCompleted changes the completed property
-        todo.completed = !todo.completed;
-    },
-    //provides toggleAll method
-    toggleAll: function() {
-        var totalTodos = this.todos.length;
-        //Get number of completedTodos
-        var completedTodos = 0;
-        this.todos.forEach(function(todo) {
-            if (todo.completed === true) {
-                completedTodos++;
-            }
-        });
-        this.todos.forEach(function(todo) {
-            // If everything's true,
-            if (completedTodos === totalTodos) {
-                // Make everything false.
-                todo.completed = false;
-            } else {
-                // Otherwise, make everything true
-                todo.completed = true;
-            }
-        });
-    }
+  //stores todos array on an object
+  todos: [],
+  //provides addTodo method
+  addTodo: function(todoText) {
+    this.todos.push({
+      todoText: todoText,       
+      completed: false
+    });
+  },
+  //provides changeTodo method
+  changeTodo: function(position, todoText) {
+    //changeTodo method must change todoText property
+    this.todos[position].todoText = todoText;   
+  },
+  //provides deleteTodo method
+  deleteTodo: function(position) {
+    this.todos.splice(position, 1);
+  },
+  //provides toggleCompleted method
+  toggleCompleted: function(position) {
+    var todo = this.todos[position];
+    //todoList.toggleCompleted changes the completed property
+    todo.completed = !todo.completed;
+  },
+  //provides toggleAll method
+  toggleAll: function() {
+    var totalTodos = this.todos.length;
+    //Get number of completedTodos
+    var completedTodos = 0;
+    this.todos.forEach(function(todo) {
+      if (todo.completed === true) {
+        completedTodos++;
+      }
+    });
+    this.todos.forEach(function(todo) {
+      // If everything's true,
+      if (completedTodos === totalTodos) {
+        // Make everything false.
+        todo.completed = false;
+      } else {
+        // Otherwise, make everything true
+        todo.completed = true;
+      }
+    });
+  }
 };
 // Creates a 'handlers' method for all buttons/events in the HTML file 
 var handlers = {
