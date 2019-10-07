@@ -64,11 +64,11 @@ var handlers = {
     },
     // changeTodo button handler
     changeTodo: function() {
-        var changeTodoPositionInput = document.getElementById("changeTodoPositionInput");
-        var changeTodoTextInput = document.getElementById("changeTodoTextInput");
-        todoList.changeTodo(changeTodoPositionInput.valueAsNumber, changeTodoTextInput.value);
-        changeTodoPositionInput.value = '';
-        changeTodoTextInput.value = '';
+        var changeTodoPositionInput = event.target.parentNode.id;
+        var changeTodoTextInput = document.getElementById("changeButtonInput");
+        todoList.changeTodo(changeTodoPositionInput, changeTodoTextInput.value);
+        // changeTodoPositionInput.value = '';
+        // changeTodoTextInput.value = '';
         view.displayTodos();
     },
     // Updated deleteTodo button handler
@@ -111,6 +111,7 @@ var view = {
             todoLi.textContent = todoTextWithCompletion;
             // There should be a delete button for each todo
             todoLi.appendChild(this.createDeleteButton());
+            // There should be a change button for each todo
             todoLi.appendChild(this.createChangeButton());
             todosUl.appendChild(todoLi);
         }, this);
@@ -124,13 +125,11 @@ var view = {
     },
     // There should be a way to create change Todo button and input
     createChangeButton: function() {
-        var changeButton = document.createElement('button');
         var changeButtonInput = document.createElement('input');
-        changeButton.textContent = 'Change';
-        changeButton.className = 'changeButton';
         changeButtonInput.type = "text";
-        changeButtonInput.className = 'changeButtonInput';
-        return changeButton;
+        changeButtonInput.id = 'changeButtonInput';
+        changeButtonInput.placeholder = 'Change Todo';
+        return changeButtonInput;
     },
     setUpEventListeners: function() {
         var todosUl = document.querySelector('ul');
@@ -146,19 +145,16 @@ var view = {
                 handlers.deleteTodo(parseInt(elementClicked.parentNode.id));
             }
         });
-        // Change buttons should have access to the todo id
-        todosUl.addEventListener('click', function(event) {
+        // Change buttons (Enter/Return) should have access to the todo id
+        todosUl.addEventListener('keyup', function(event) {
 
-            // Get element that was clicked on
-            var elementClicked = event.target;
-            // Check if clicked element is a change button
-            if (elementClicked.className === 'changeButton') {
-                console.log(elementClicked.className);
-                console.log(elementClicked.parentNode.id);
-                // Clicking Change should update todoList.todos and the DOM
-                // handlers.changeTodo();
+            // Check if Enter/Return button was pressed
+            if (event.keyCode === 13) {
+                console.log(event.target.parentNode.id);
+                // Pressing Enter/Return should update todoList.todos and the DOM
+                handlers.changeTodo();
             }
-        })
+        });
     }
 };
 view.setUpEventListeners();
