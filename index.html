@@ -9,26 +9,36 @@
 </head>
 
 <body>
-    <h1 class="display-1 text-center">Todo List</h1>
-    <!-- There should be a 'Toggle All' button -->
-    <div>
-        <!-- Clicking 'Toggle All' should run todoList.toggleAll -->
-        <button onclick="handlers.toggleAll()">Toggle All</button>
-    </div>
-    <!-- There should be a button for adding todos, changing todos, deleting todos and toggling todos -->
-    <div>
-        <!-- Clicking 'Add' should run todoList.addTodo -->
-        <button onclick="handlers.addTodo()">Add</button>
-        <input id="addTodoTextInput" type="text">
-    </div>
-    <div>
-        <!-- Clicking 'Toggle Completed' should run todoList.toggleCompleted -->
-        <button onclick="handlers.toggleCompleted()">Toggle Completed</button>
-        <input id="toggleCompletedPositionInput" type="number">
+    <div class="container">
+        <h1 class="display-1 text-center">Todo List</h1>
+        <div class="row">
+            <div class="col-sm">
+            </div>
+            <div class="col-6">
+                <div>
+                    <!-- Clicking 'Toggle All' should run todoList.toggleAll -->
+                    <button onclick="handlers.toggleAll()">Toggle All</button>
+                </div>
+                <!-- There should be a button for adding todos, changing todos, deleting todos and toggling todos -->
+                <div>
+                    <!-- Clicking 'Add' should run todoList.addTodo -->
+                    <button onclick="handlers.addTodo()">Add</button>
+                    <input id="addTodoTextInput" type="text">
+                </div>
+                <div>
+                    <!-- Clicking 'Toggle Completed' should run todoList.toggleCompleted -->
+                    <button onclick="handlers.toggleCompleted()">Toggle Completed</button>
+                    <input id="toggleCompletedPositionInput" type="number">
+                </div>
+
+                <ul class="list-unstyled">
+                </ul>
+            </div>
+            <div class="col-sm">
+            </div>
+        </div>
     </div>
 
-    <ul>
-    </ul>
 
     <script src="script.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
