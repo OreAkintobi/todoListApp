@@ -76,6 +76,17 @@ var handlers = {
       addTodoTextInput.value = "";
       view.displayTodos();
     }
+    // addTodoTextInput.addEventListener("keyup", function(event) {
+    //   if (event.keyCode === 13) {
+    //     if (addTodoTextInput.value.trim() === "") {
+    //       alert("Please Enter a Todo.");
+    //     } else {
+    //       todoList.addTodo(addTodoTextInput.value);
+    //       addTodoTextInput.value = "";
+    //       view.displayTodos();
+    //     }
+    //   }
+    // });
   },
   // changeTodo input handler
   changeTodo: function() {

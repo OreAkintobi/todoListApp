@@ -6,8 +6,8 @@ body {
 .frame {
   position: relative;
   margin: 4% auto;
-  width: 700px;
-  height: 600px;
+  width: 50rem;
+  height: 38rem;
   border: 1.1px solid black;
   border-radius: 10px;
   overflow-y: auto;
