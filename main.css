@@ -1,14 +1,20 @@
 body {
-  /* background-color: bisque; */
+  background-image: url("/img/bg.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   height: 100%;
 }
 
-.frame {
-  position: relative;
+.head {
+  font-size: 5rem;
+}
+
+.kontena {
   margin: 4% auto;
-  width: 50rem;
-  height: 38rem;
-  border: 1.1px solid black;
+  height: 30rem;
+  width: 40%;
+  border: 1.1px solid white;
   border-radius: 10px;
   overflow-y: auto;
   background: #fff;
