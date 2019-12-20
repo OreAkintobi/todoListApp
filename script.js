@@ -125,11 +125,12 @@ var view = {
       todoLi.id = position;
       // Each li element should contain .todoText
       todoLi.textContent = todoTextWithCompletion;
-      todoDate.textContent = "added " + todo.dateCreated;
-      // There should be a delete button for each todo
-      todoLi.appendChild(this.createDeleteButton());
+      todoDate.textContent = "  added " + todo.dateCreated;
+
       // There should be a change button for each todo
       todoLi.appendChild(this.createChangeInput());
+      // There should be a delete button for each todo
+      todoLi.appendChild(this.createDeleteButton());
       italics.appendChild(todoDate);
       todoLi.appendChild(italics);
       todosUl.appendChild(todoLi);
@@ -138,8 +139,9 @@ var view = {
   // There should be a way to create delete buttons
   createDeleteButton: function() {
     var deleteButton = document.createElement("button");
-    deleteButton.textContent = "Delete";
+    deleteButton.textContent = "X";
     deleteButton.className = "deleteButton";
+    // deleteButton.className += "btn btn-outline-dark btn-sm";
     return deleteButton;
   },
   // There should be a way to create change Todo button and input

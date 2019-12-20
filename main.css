@@ -10,7 +10,7 @@ body {
   height: 600px;
   border: 1.1px solid black;
   border-radius: 10px;
-  overflow: hidden;
+  overflow-y: auto;
   background: #fff;
 }
 
