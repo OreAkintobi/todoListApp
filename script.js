@@ -13,6 +13,7 @@ var todoList = {
   addTodo: function(todoText) {
     this.todos.push({
       todoText: todoText,
+      dateCreated: new Date().toDateString(),
       completed: false
     });
   },
@@ -51,6 +52,16 @@ var todoList = {
         todo.completed = true;
       }
     });
+  },
+  // provides searchTodo method
+  searchTodos: function(searchValue) {
+    // console.log("SEarching...");
+    console.log(searchValue);
+    let searchResults = this.todos.filter(todo =>
+      todo.todoText.startsWith(searchValue)
+    );
+    console.log(searchResults);
+    return searchResults;
   }
 };
 // Creates a 'handlers' method for all buttons/events in the HTML file
@@ -58,15 +69,18 @@ var handlers = {
   // addTodo button handler
   addTodo: function() {
     var addTodoTextInput = document.getElementById("addTodoTextInput");
-    todoList.addTodo(addTodoTextInput.value);
-    addTodoTextInput.value = "";
-    view.displayTodos();
+    if (addTodoTextInput.value.trim() === "") {
+      alert("Please Enter a Todo.");
+    } else {
+      todoList.addTodo(addTodoTextInput.value);
+      addTodoTextInput.value = "";
+      view.displayTodos();
+    }
   },
-  // changeTodo button handler
+  // changeTodo input handler
   changeTodo: function() {
     var changeTodoPositionInput = event.target.parentNode.id;
     todoList.changeTodo(changeTodoPositionInput, event.target.value);
-    console.log(event.target.value);
     view.displayTodos();
   },
   // Updated deleteTodo button handler
@@ -97,6 +111,8 @@ var view = {
     todoList.todos.forEach(function(todo, position) {
       var todoLi = document.createElement("li");
       var todoTextWithCompletion = "";
+      var todoDate = document.createElement("small");
+      var italics = document.createElement("i");
 
       // Each li element should show .completed
       if (todo.completed === true) {
@@ -109,10 +125,13 @@ var view = {
       todoLi.id = position;
       // Each li element should contain .todoText
       todoLi.textContent = todoTextWithCompletion;
+      todoDate.textContent = "added " + todo.dateCreated;
       // There should be a delete button for each todo
       todoLi.appendChild(this.createDeleteButton());
       // There should be a change button for each todo
-      todoLi.appendChild(this.createChangeButton());
+      todoLi.appendChild(this.createChangeInput());
+      italics.appendChild(todoDate);
+      todoLi.appendChild(italics);
       todosUl.appendChild(todoLi);
     }, this);
   },
@@ -124,23 +143,31 @@ var view = {
     return deleteButton;
   },
   // There should be a way to create change Todo button and input
-  createChangeButton: function() {
-    var changeButtonInput = document.createElement("input");
+  createChangeInput: function() {
+    var changeInput = document.createElement("input");
     // Change buttons (Enter/Return) should have access to the todo id
-    changeButtonInput.addEventListener("keyup", function(event) {
+    changeInput.addEventListener("keyup", function(event) {
       // Check if Enter/Return button was pressed
       if (event.keyCode === 13) {
         // Pressing Enter/Return should update todoList.todos and the DOM
         handlers.changeTodo();
       }
     });
-    changeButtonInput.type = "text";
-    changeButtonInput.id = "changeButtonInput";
-    changeButtonInput.placeholder = "Change Todo";
-    return changeButtonInput;
+    changeInput.type = "text";
+    changeInput.id = "changeButtonInput";
+    changeInput.placeholder = "Change Todo";
+    return changeInput;
   },
   setUpEventListeners: function() {
     var todosUl = document.querySelector("ul");
+    let todoSearch = document.querySelector("#todo-filter");
+
+    todoSearch.addEventListener("keyup", function(event) {
+      if (event.keyCode === 13) {
+        todoList.searchTodos(todoSearch.value);
+        console.log(todoSearch.value);
+      }
+    });
 
     // Delete buttons should have access to the todo id
     todosUl.addEventListener("click", function(event) {
