@@ -1,6 +1,6 @@
 body {
   background-image: url("/img/bg.svg");
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
   background-position: center;
   background-size: cover;
   height: 100%;
@@ -13,7 +13,7 @@ body {
 .kontena {
   margin: 4% auto;
   height: 30rem;
-  width: 40%;
+  max-width: 70%;
   border: 1.1px solid white;
   border-radius: 10px;
   overflow-y: auto;
