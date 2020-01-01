@@ -98,7 +98,7 @@ var handlers = {
     );
     todoList.toggleCompleted(toggleCompletedPositionInput.valueAsNumber);
     toggleCompletedPositionInput.value = "";
-    view.displayTodos();
+    view.displayTodos(todoList.todos);
   },
   // toggleAll button handler
   toggleAll: function() {
