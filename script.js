@@ -55,49 +55,41 @@ var todoList = {
   },
   // provides searchTodo method
   searchTodos: function(searchValue) {
-    // console.log("SEarching...");
-    console.log(searchValue);
     let searchResults = this.todos.filter(todo =>
       todo.todoText.startsWith(searchValue)
     );
-    console.log(searchResults);
-    return searchResults;
+    view.displayTodos(searchResults);
   }
 };
 // Creates a 'handlers' method for all buttons/events in the HTML file
 var handlers = {
+  // addTodo input handler
+  addTodoTextInput: document.getElementById("addTodoTextInput"),
+  addTodoOnInput: addTodoTextInput.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+      handlers.addTodo();
+    }
+  }),
   // addTodo button handler
   addTodo: function() {
-    var addTodoTextInput = document.getElementById("addTodoTextInput");
     if (addTodoTextInput.value.trim() === "") {
       alert("Please Enter a Todo.");
     } else {
       todoList.addTodo(addTodoTextInput.value);
       addTodoTextInput.value = "";
-      view.displayTodos();
+      view.displayTodos(todoList.todos);
     }
-    // addTodoTextInput.addEventListener("keyup", function(event) {
-    //   if (event.keyCode === 13) {
-    //     if (addTodoTextInput.value.trim() === "") {
-    //       alert("Please Enter a Todo.");
-    //     } else {
-    //       todoList.addTodo(addTodoTextInput.value);
-    //       addTodoTextInput.value = "";
-    //       view.displayTodos();
-    //     }
-    //   }
-    // });
   },
   // changeTodo input handler
   changeTodo: function() {
     var changeTodoPositionInput = event.target.parentNode.id;
     todoList.changeTodo(changeTodoPositionInput, event.target.value);
-    view.displayTodos();
+    view.displayTodos(todoList.todos);
   },
   // Updated deleteTodo button handler
   deleteTodo: function(position) {
     todoList.deleteTodo(position);
-    view.displayTodos();
+    view.displayTodos(todoList.todos);
   },
   // toggleCompleted button handler
   toggleCompleted: function() {
@@ -111,15 +103,15 @@ var handlers = {
   // toggleAll button handler
   toggleAll: function() {
     todoList.toggleAll();
-    view.displayTodos();
+    view.displayTodos(todoList.todos);
   }
 };
 var view = {
-  displayTodos: function() {
+  displayTodos: function(todoArray) {
     var todosUl = document.querySelector("ul");
     todosUl.innerHTML = "";
     // There should be an li element for every todo
-    todoList.todos.forEach(function(todo, position) {
+    todoArray.forEach(function(todo, position) {
       var todoLi = document.createElement("li");
       var todoTextWithCompletion = "";
       var todoDate = document.createElement("small");
@@ -167,7 +159,7 @@ var view = {
       }
     });
     changeInput.type = "text";
-    changeInput.id = "changeButtonInput";
+    changeInput.className = "changeButtonInput";
     changeInput.placeholder = "Change Todo";
     return changeInput;
   },
@@ -178,7 +170,6 @@ var view = {
     todoSearch.addEventListener("keyup", function(event) {
       if (event.keyCode === 13) {
         todoList.searchTodos(todoSearch.value);
-        console.log(todoSearch.value);
       }
     });
 
