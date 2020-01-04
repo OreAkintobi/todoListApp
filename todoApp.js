@@ -1,12 +1,11 @@
-// REQUIREMENTS (V13)
+// REQUIREMENTS (V14)
 
-// there should be a way to search todos
 // there should be a way to toggle todos completed or not completed without the toggle completed input and button
-// there should be a way to store todos
 
 var todoList = {
   //stores todos array on an object
-  todos: [],
+
+  todos: (data = JSON.parse(localStorage.getItem("todos"))) || [],
 
   //provides addTodo method
   addTodo: function(todoText) {
@@ -15,33 +14,36 @@ var todoList = {
       dateCreated: new Date().toDateString(),
       completed: false
     });
+    localStorage.setItem("todos", JSON.stringify(this.todos));
   },
   //provides changeTodo method
   changeTodo: function(position, todoText) {
     //changeTodo method must change todoText property
-    this.todos[position].todoText = todoText;
+    data[position].todoText = todoText;
+    localStorage.setItem("todos", JSON.stringify(this.todos));
   },
   //provides deleteTodo method
   deleteTodo: function(position) {
-    this.todos.splice(position, 1);
+    data.splice(position, 1);
+    localStorage.setItem("todos", JSON.stringify(this.todos));
   },
   //provides toggleCompleted method
   toggleCompleted: function(position) {
-    var todo = this.todos[position];
     //todoList.toggleCompleted changes the completed property
-    todo.completed = !todo.completed;
+    data[position].completed = !data[position].completed;
+    localStorage.setItem("todos", JSON.stringify(this.todos));
   },
   //provides toggleAll method
   toggleAll: function() {
-    var totalTodos = this.todos.length;
+    var totalTodos = data.length;
     //Get number of completedTodos
     var completedTodos = 0;
-    this.todos.forEach(function(todo) {
+    data.forEach(function(todo) {
       if (todo.completed === true) {
         completedTodos++;
       }
     });
-    this.todos.forEach(function(todo) {
+    data.forEach(function(todo) {
       // If everything's true,
       if (completedTodos === totalTodos) {
         // Make everything false.
@@ -51,6 +53,7 @@ var todoList = {
         todo.completed = true;
       }
     });
+    localStorage.setItem("todos", JSON.stringify(this.todos));
   },
   // provides searchTodo method
   searchTodos: function(searchValue) {
@@ -77,19 +80,19 @@ var handlers = {
     } else {
       todoList.addTodo(addTodoTextInput.value);
       addTodoTextInput.value = "";
-      view.displayTodos(todoList.todos);
+      view.displayTodos(data);
     }
   },
   // changeTodo input handler
   changeTodo: function() {
     var changeTodoPositionInput = event.target.parentNode.id;
     todoList.changeTodo(changeTodoPositionInput, event.target.value);
-    view.displayTodos(todoList.todos);
+    view.displayTodos(data);
   },
   // Updated deleteTodo button handler
   deleteTodo: function(position) {
     todoList.deleteTodo(position);
-    view.displayTodos(todoList.todos);
+    view.displayTodos(data);
   },
   // toggleCompleted button handler
   toggleCompleted: function() {
@@ -98,12 +101,12 @@ var handlers = {
     );
     todoList.toggleCompleted(toggleCompletedPositionInput.valueAsNumber);
     toggleCompletedPositionInput.value = "";
-    view.displayTodos(todoList.todos);
+    view.displayTodos(data);
   },
   // toggleAll button handler
   toggleAll: function() {
     todoList.toggleAll();
-    view.displayTodos(todoList.todos);
+    view.displayTodos(data);
   }
 };
 var view = {
@@ -191,6 +194,5 @@ var view = {
     });
   }
 };
+view.displayTodos(data);
 view.setUpEventListeners();
-
-// export default todoApp;
