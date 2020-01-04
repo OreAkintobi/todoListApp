@@ -3,6 +3,7 @@
 Version 14 of Todo List App (credit to Gordon Zhu Watch & Code Course).
 
 UPDATES:
+
 a. App now has full local storage functionality (refreshing the page does not delete todos)
 
 b. Each todo now has a working input to change todos and an updated delete button
