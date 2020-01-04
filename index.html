@@ -22,25 +22,33 @@
             </div>
             <div class="col-10">
                 <div>
-                    <label for="todo-filter" id="todo-filter"></label>
-                    <input type="text" id="todo-filter" class="todo-filter" onkeyup="" placeholder="Search Todos" />
+                    <label for="todo-filter" id="todo-filter">
+                        <input type="text" id="todo-filter" class="todo-filter" onkeyup="" placeholder="Search Todos" />
+                    </label>
                 </div>
                 <div>
-                    <button type="button" class="btn btn-outline-dark btn-sm" onclick="handlers.toggleAll()">Toggle
-                        All</button>
+                    <label for="toggleAll" id="toggleAll">
+                        <button type="button" class="btn btn-outline-dark btn-sm" id="toggleAll"
+                            onclick="handlers.toggleAll()">Toggle
+                            All</button>
+                    </label>
                 </div>
 
                 <div>
-                    <label for="toggleCompletedPositionInput" id="toggleCompletedPositionInput"><button type="button"
-                            class="btn btn-outline-dark btn-sm" onclick="handlers.toggleCompleted()">Toggle
-                            Completed</button></label>
-                    <input id="toggleCompletedPositionInput" type="number">
+                    <label for="toggleCompletedPositionInput" id="toggleCompletedPositionInput">
+                        <button type="button" class="btn btn-outline-dark btn-sm"
+                            onclick="handlers.toggleCompleted()">Toggle
+                            Completed</button>
+                        <input id="toggleCompletedPositionInput" type="number">
+                    </label>
                 </div>
                 <div>
-                    <label for="addTodoTextInput" id="addTodoTextInput"><button type="button"
-                            class="btn btn-outline-dark btn-sm" onclick="handlers.addTodo()">Add
-                            Todo</button></label>
-                    <input id="addTodoTextInput" type="text" placeholder="Add a Todo">
+                    <label for="addTodoTextInput" id="addTodoTextInput">
+                        <button type="button" class="btn btn-outline-dark btn-sm" onclick="handlers.addTodo()">Add
+                            Todo</button>
+                        <input id="addTodoTextInput" type="text" placeholder="Add a Todo">
+                    </label>
+
                 </div>
                 <ul class="list-unstyled">
                 </ul>
