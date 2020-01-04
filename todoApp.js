@@ -66,13 +66,6 @@ var todoList = {
 
 // Creates a 'handlers' method for all buttons/events in the HTML file
 var handlers = {
-  // addTodo input handler
-  addTodoTextInput: document.getElementById("addTodoTextInput"),
-  addTodoOnInput: addTodoTextInput.addEventListener("keyup", function(event) {
-    if (event.keyCode === 13) {
-      handlers.addTodo();
-    }
-  }),
   // addTodo button handler
   addTodo: function() {
     if (addTodoTextInput.value.trim() === "") {
@@ -168,13 +161,21 @@ var view = {
   },
   setUpEventListeners: function() {
     var todosUl = document.querySelector("ul");
-    let todoSearch = document.querySelector("#todo-filter");
 
+    let todoSearch = document.querySelector("#todo-filter");
     // runs event listener on Search Input
     todoSearch.addEventListener("keyup", function(event) {
       // if (event.keyCode === 13) {
       todoList.searchTodos(todoSearch.value);
       // }
+    });
+
+    // addTodo input handler
+    let addTodoTextInput = document.getElementById("addTodoTextInput");
+    addTodoTextInput.addEventListener("keyup", function(event) {
+      if (event.keyCode === 13) {
+        handlers.addTodo();
+      }
     });
 
     // Delete buttons should have access to the todo id
