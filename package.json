@@ -1,0 +1,33 @@
+{
+  "name": "todolistapp-v13",
+  "version": "1.0.0",
+  "description": "I built an extremely bare-bones Todo List App from taking Gordon Zhu's Watch & Code Course.\r  View here https://oreakintobi.github.io/todoListApp/",
+  "main": "script.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OreAkintobi/todoListApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OreAkintobi/todoListApp/issues"
+  },
+  "homepage": "https://github.com/OreAkintobi/todoListApp#readme",
+  "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/preset-env": "^7.7.7",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/user-event": "^7.1.2",
+    "babel-eslint": "^10.0.3",
+    "jest": "^24.9.0",
+    "jsdom": "^15.2.1",
+    "jsdom-global": "^3.0.2"
+  },
+  "dependencies": {
+    "@testing-library/dom": "^6.11.0"
+  }
+}
