@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="Description"
+        content="Author: Ore Akintobi,
+    Category: Todo List App that allows a user to add, change, delete and store todos as well as mark completed or uncompleted.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
+    <title>Todo List App</title>
 </head>
 
 <body>
@@ -16,6 +22,7 @@
             </div>
             <div class="col-10">
                 <div>
+                    <label for="todo-filter"></label>
                     <input type="text" id="todo-filter" class="todo-filter" onkeyup="" placeholder="Search Todos" />
                 </div>
                 <div>
@@ -24,14 +31,15 @@
                 </div>
 
                 <div>
-                    <button type="button" class="btn btn-outline-dark btn-sm"
-                        onclick="handlers.toggleCompleted()">Toggle
-                        Completed</button>
+                    <label for="toggleCompletedPositionInput"><button type="button" class="btn btn-outline-dark btn-sm"
+                            onclick="handlers.toggleCompleted()">Toggle
+                            Completed</button></label>
                     <input id="toggleCompletedPositionInput" type="number">
                 </div>
                 <div>
-                    <button type="button" class="btn btn-outline-dark btn-sm" onclick="handlers.addTodo()">Add
-                        Todo</button>
+                    <label for="addTodoTextInput"><button type="button" class="btn btn-outline-dark btn-sm"
+                            onclick="handlers.addTodo()">Add
+                            Todo</button></label>
                     <input id="addTodoTextInput" type="text" placeholder="Add a Todo">
                 </div>
                 <ul class="list-unstyled">
