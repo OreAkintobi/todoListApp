@@ -80,19 +80,19 @@ var handlers = {
     } else {
       todoList.addTodo(addTodoTextInput.value);
       addTodoTextInput.value = "";
-      view.displayTodos(data);
+      view.displayTodos(todoList.todos);
     }
   },
   // changeTodo input handler
   changeTodo: function() {
     var changeTodoPositionInput = event.target.parentNode.id;
     todoList.changeTodo(changeTodoPositionInput, event.target.value);
-    view.displayTodos(data);
+    view.displayTodos(todoList.todos);
   },
   // Updated deleteTodo button handler
   deleteTodo: function(position) {
     todoList.deleteTodo(position);
-    view.displayTodos(data);
+    view.displayTodos(todoList.todos);
   },
   // toggleCompleted button handler
   toggleCompleted: function() {
@@ -101,12 +101,12 @@ var handlers = {
     );
     todoList.toggleCompleted(toggleCompletedPositionInput.valueAsNumber);
     toggleCompletedPositionInput.value = "";
-    view.displayTodos(data);
+    view.displayTodos(todoList.todos);
   },
   // toggleAll button handler
   toggleAll: function() {
     todoList.toggleAll();
-    view.displayTodos(data);
+    view.displayTodos(todoList.todos);
   }
 };
 var view = {
@@ -194,5 +194,5 @@ var view = {
     });
   }
 };
-view.displayTodos(data);
+view.displayTodos(todoList.todos);
 view.setUpEventListeners();
