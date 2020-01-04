@@ -1,14 +1,13 @@
-// REQUIREMENTS (V12)
+// REQUIREMENTS (V13)
 
-// there should be a way to create changeTodo buttons
-// there should be a changeTodo button for each todo
-// each li should have an id that has the todo position
-// changeTodo buttons should have access to the todo id
-// clicking change should update todoList.todos and the DOM
+// there should be a way to search todos
+// there should be a way to toggle todos completed or not completed without the toggle completed input and button
+// there should be a way to store todos
 
 var todoList = {
   //stores todos array on an object
   todos: [],
+
   //provides addTodo method
   addTodo: function(todoText) {
     this.todos.push({
@@ -61,6 +60,7 @@ var todoList = {
     view.displayTodos(searchResults);
   }
 };
+
 // Creates a 'handlers' method for all buttons/events in the HTML file
 var handlers = {
   // addTodo input handler
@@ -167,20 +167,26 @@ var view = {
     var todosUl = document.querySelector("ul");
     let todoSearch = document.querySelector("#todo-filter");
 
+    // runs event listener on Search Input
     todoSearch.addEventListener("keyup", function(event) {
-      if (event.keyCode === 13) {
-        todoList.searchTodos(todoSearch.value);
-      }
+      // if (event.keyCode === 13) {
+      todoList.searchTodos(todoSearch.value);
+      // }
     });
 
     // Delete buttons should have access to the todo id
     todosUl.addEventListener("click", function(event) {
       // Get element that was clicked on
       var elementClicked = event.target;
+
+      var todoListItem = document.querySelector("li");
       // Check if clicked element is a delete button
       if (elementClicked.className === "deleteButton") {
         // Clicking delete should update todoList.todos and the DOM
         handlers.deleteTodo(parseInt(elementClicked.parentNode.id));
+      }
+      if (elementClicked === todoListItem) {
+        console.log(todoListItem.parentNode.id);
       }
     });
   }
