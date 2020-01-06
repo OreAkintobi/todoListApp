@@ -38,12 +38,12 @@ var todoList = {
     var totalTodos = this.todos.length;
     //Get number of completedTodos
     var completedTodos = 0;
-    data.forEach(function(todo) {
+    this.todos.forEach(function(todo) {
       if (todo.completed === true) {
         completedTodos++;
       }
     });
-    data.forEach(function(todo) {
+    this.todos.forEach(function(todo) {
       // If everything's true,
       if (completedTodos === totalTodos) {
         // Make everything false.
