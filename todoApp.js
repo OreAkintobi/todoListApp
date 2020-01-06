@@ -30,12 +30,12 @@ var todoList = {
   //provides toggleCompleted method
   toggleCompleted: function(position) {
     //todoList.toggleCompleted changes the completed property
-    data[position].completed = !data[position].completed;
+    this.todos[position].completed = !this.todos[position].completed;
     localStorage.setItem("todos", JSON.stringify(this.todos));
   },
   //provides toggleAll method
   toggleAll: function() {
-    var totalTodos = data.length;
+    var totalTodos = this.todos.length;
     //Get number of completedTodos
     var completedTodos = 0;
     data.forEach(function(todo) {
